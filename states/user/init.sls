@@ -5,8 +5,6 @@
 salt://user/files/init.sh:
   cmd.script:
     - cwd: {{ user.home }}
-    - user: {{ user.uid }}
-    - group: {{ user.gid }}
     - unless: test -d {{ user.home }}/.config/vcsh/repo.d/dotfiles-mr.git
 
 xmonad_configure:
@@ -18,8 +16,6 @@ xmonad_recompile:
   cmd.run:
     - name: xmonad --recompile
     - cwd: {{ user.home }}
-    - user: {{ user.uid }}
-    - group: {{ user.gid }}
     - only_if: test -f {{ user.home }}/.xmonad/xmonad.hs
     - requires:
       - cmd: xmonad_configure
