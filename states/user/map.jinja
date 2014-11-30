@@ -1,0 +1,9 @@
+{% set user = salt['grains.filter_by']({
+    'Debian': {
+        'uid': 'jianingy',
+        'gid': 'jianingy',
+        'home': '/home/jianingy',
+        'shell': '/bin/zsh',
+        'fullname': 'Jianing Yang'
+    },
+}, merge=salt['pillar.get']('nby_desktop:environment')) %}
